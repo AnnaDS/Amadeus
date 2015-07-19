@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Top aiports usng Flask output json</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>Input the value of top arrival airports in 2013 you want to know</h1>
+            </div>
+            <div id="content">
+                <form method="post" action="{{ url_for('result') }}">
+                  <label for="yourname">Please enter he number of output top:</label>
+                  <input type="text" name="top" /><br />
+                  <input type="submit" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+ 
