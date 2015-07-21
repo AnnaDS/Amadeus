@@ -18,7 +18,7 @@ def form():
 
 def display_top(filename, v, n):
     DD=pd.DataFrame()
-    for chunk in pd.read_table(filename, sep="^", chunksize=10000):
+    for chunk in pd.read_table(filename, sep="^", chunksize=100000, usecols=v['fields']):
         chunk.columns=map(str.strip, chunk.columns)
         DD=DD.append(chunk[['arr_port','pax']], ignore_index =True)
     D1= DD.groupby("arr_port")["pax"].sum().order(ascending=False)[:n]
@@ -33,7 +33,7 @@ def result():
 	return "Please submit a value of top's"
     if not n.isdigit() or int(n)>10:
 	return 'The submitted value is not integer! Please return and run again'
-    filename='/media/sf_VM_share/bookings.csv'
+    filename='/root/anaconda/Amadeus/bookings.csv'
     v=dict(fields= ['pax', 'arr_port'])
     n=int(n)
     #print n
